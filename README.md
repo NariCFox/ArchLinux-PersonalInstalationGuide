@@ -63,7 +63,7 @@ O ‘ip link’ verifica se a conexão é por Wi-Fi(wlan0) ou a cabo(eth).
 > 
 > *Abaixo segue um exemplo de conexão somente pelo Wi-Fi:*
 
-[Print - ConexaoWiFi]
+![Print - ConexaoWiFi](Arch-Instalation-Prints/1.1-IpLink-WiFiConnection.png)
 
 > *Quando ambas as conexões estão ativas aparece tudo **‘UP’**, quando ambas estão inativas aparece tudo **‘DOWN’**, e quando é só uma das duas que está ativa só aparece **‘UP’** em uma das duas."*
 > 
@@ -136,7 +136,7 @@ Comando absoluto para selecionar a zona continental **(America)** e a zona local
 
 Abaixo tem um print de como você iria visualizar essa parte da configuração durante a sua instalação do ArchLinux pela ISO:
 
-[TimedatectlConfigurado-Print]
+![TimedatectlConfigurado-Print](Arch-Instalation-Prints/1.2-TimeDateCtl-TimezoneSelect.png)
 
 Não tem muito segredo no **‘timedactl’**, é basicamente isso e inclusive você até pode fazer essa parte depois de selecionar a zona, mas a sincronização do hardware com o servidor global é essencial.
 
@@ -158,19 +158,25 @@ Iniciamos o processo de particionamento conhecendo o nosso disco, o HD ou SSD, a
 > 
 > *Cada computador nomeia o seu disco de uma forma diferente, para identificar basta verificar o tamanho do volume, geralmente eles são a partir de 256 gigabytes."*
 
-[ListaDeBlocosVazios-Print]
+![ListaDeBlocosVazios-Print](Arch-Instalation-Prints/1.3-lsblk-CleanDiskTables.png)
 
-> *"Sobre o **‘fdisk’** existem outros programas de particionamento como o **‘parted ou cfdisk’**, mas eu utilizo o **‘fdisk’**, ele é um programa de particionamento, você acessa ele e dentro dele tem comandos próprios que podem ser utilizados, basta digitar **‘m’** para ter um guia/lista de comandos."* 
-> 
-Tem duas formas de sair do programa também que é importante prestar atenção: **‘w’** sai e salva tudo que você modificou; **‘q’** sai sem salvar nenhuma alteração nas partições ou disco existente.**
+---
 
-> Entrar no ‘fdisk’ para iniciar o programa de partições e selecionar o disco que você vai dividir/particionar:
+> *"Sobre o **‘fdisk’** existem outros programas de particionamento como o **‘parted ou cfdisk’**, mas eu utilizo o **‘fdisk’**, ele é um programa de particionamento, você acessa ele e dentro dele tem comandos próprios que podem ser utilizados, basta digitar **‘m’** para ter um guia/lista de comandos.* 
+
+![TabelaMAjuda-Print](Arch-Instalation-Prints/1.4-fdisk-HelpTable.png)
+
+> *Tem duas formas de sair do programa também que é importante prestar atenção: **‘w’** sai e salva tudo que você modificou; **‘q’** sai sem salvar nenhuma alteração nas partições ou disco existente."*
+
+---
+
+> Para entrar no **‘fdisk’**, iniciar o programa de partições e selecionar o disco que você vai dividir/particionar:
 
 	fdisk /dev/sdx
 
 *"Abaixo o print de exemplo ao entrar no particionamento de discos pelo **‘fdisk’**."*
 
-[FdiskWelcome-Print]
+![FdiskWelcome-Print](Arch-Instalation-Prints/1.5-fdisk-Init&SelectDisk.png)
 
 Cada partição tem uma forma específica de ser formatada e montada, também é possível nomear suas partições para facilitar a identificação dela e para o que você está utilizando cada coisa.
 
@@ -182,7 +188,7 @@ As 3 formas de montagem mais comuns são **ROOT, SWAP** e **BOOT**. São as mais
 > 
 > - **BOOT:** *O sistema de inicialização que garante que os arquivos do sistema operacional não serão corrompidos e irá iniciar com segurança.*
 
-Para criar partições utilizamos o comando ‘n’ dentro do ‘fdisk’, em seguida começamos a configuração de numeração e tamanho da partição.
+Para criar partições utilizamos o comando **‘n’** dentro do **‘fdisk’**, em seguida começamos a configuração de numeração e tamanho da partição.
 
 Eu decido o tamanho das minha partições pelo que eu vou precisar para o meu sistema, mas o básico que o **‘boot’** precisa no mínimo por padrão é 300Megabytes; uma *‘swap’* razoável utiliza de 4G a 2Gigabytes ~~*(depende do quanto você ja possui de RAM e o total que você quer ter)*~~; o **‘root’** pode ficar com todo o espaço restante do HD ou SSD, então não é necessário colocar um valor nele, por isso eu geralmente faço o **‘root’** por último e faço a numeração das partições da última para a primeira, como eu faço só 3 inicio criando a número 3, vou para o 2 e deixo sempre o **‘root’** como 1.
 
@@ -202,9 +208,11 @@ Basicamente é só isso que você precisa saber para montar suas partições ind
 
 Abaixo tem um exemplo de como criar partições, lembrando que eu faço na ordem contrária, sendo do 3 ao 1, iniciando pelo boot, seguido do swap e por último o root.
 
+![CriarPartiçõesN-Print](Arch-Instalation-Prints/1.6-fdisk-MakePartitionsN.png)
+
 Lembre-se de salvar utilizando a letra **‘w’** para salvar e sair do **‘fdisk’** sem perder as modificações que você já fez. Abaixo tem um print de exemplo:
 
-[WParaSalvar-Print]
+![WParaSalvar-Print](Arch-Instalation-Prints/1.7-fdisk-WToSave.png)
 
 Agora que as partições já foram criadas é só formatar as partições e nesse processo também podemos nomear elas da forma que quisermos.
 
@@ -214,21 +222,25 @@ Vale resaltar que você precisa saber o nome com numeração das suas partiçõe
 
 **lsblk** = Para saber o nome das suas partições e já verificar se elas foram criadas corretamente. Elas vão aparecer igual no print abaixo:
 
-[PartiçõesCriadas-Print]
+![PartiçõesCriadas-Print](Arch-Instalation-Prints/1.8-lsblk-TableDiskPartitionsUmonted.png)
 
 > Formatação do root:
 
 	mkfs.btrfs -L HD-SSD /dev/vda1
 
+![FormataçãoBTRFS](Arch-Instalation-Prints/1.9-Format-BTRFS.png)
+
 > Formatação do swap:
 
 	mkswap –L Swap /dev/vda2
+
+![FormataçãoSwap](Arch-Instalation-Prints/2.1-Format-MKSWAP.png)
 
 > Formatação do boot:
 
 	mkfs.ext4 -L Boot /dev/vda3
 
-[PartiçõesNomeadas-Print]
+![FormataçãoEXT4](Arch-Instalation-Prints/2.2-Format-EXT4.png)
 
 Agora estamos prontos para a montagem dos discos, no final de cada processo aparece se o nome foi dado corretamente como você pode ver nos prints acima.
 
@@ -255,7 +267,9 @@ São utilizados 3 comando para fazer a montagem de discos, um para **‘root’*
 
 *" Caso você queira na montagem do **‘boot’** pode adicionar a **‘/efi’**, mas ela é opcional e a menos que você esteja fazendo especificamente para usar com **‘efi’** não é necessário."*
 
-Após fazer os comandos basta verificar se os blocos foram montados corretamente utilizando o ‘lsblk’ como no print abaixo:
+Após fazer os comandos basta verificar se os blocos foram montados corretamente utilizando o **‘lsblk’** como no print abaixo:
+
+![BlocosMontados-Print](Arch-Instalation-Prints/2.3-MontarVerificarBlocos.png)
 
 Caso precise desmontar algum volume, basta fazer os comandos abaixo, veja também o print de exemplo:
 
@@ -267,6 +281,7 @@ Caso precise desmontar algum volume, basta fazer os comandos abaixo, veja també
 
 	swapoff /dev/sdx2
 
+![DesmontarBlocos-Print](Arch-Instalation-Prints/2.4-DesmontarBlocos.png)
 
 ---
 ---
@@ -334,6 +349,8 @@ Antes de fazer a instalação, você pode modificar o arquivo de configuração 
 
 Agora é só descomentar a linha desejada apagando o símbolo **‘#’** e é só digitar **‘:x’** para sair e salvar como no print abaixo:
 
+![ParallelDescomentado-Print](Arch-Instalation-Prints/2.5-DescomentarParallelDownloads.png)
+
 ---
 
 > *" Importante: Caso você esteja usando uma ISO que você baixou a muito tempo vai ser preciso atualizar e sincronizar, caso contrário vai dar erro e não vai instalar nada. O comando é:*
@@ -366,7 +383,12 @@ Após esse comando é só adicionar os programas de sua preferência, começando
 
 Segue abaixo a grafia de como vai ficar o comando e após dar **‘enter’** e a tela que aparece antes de iniciar os downloads, se tiver algum erro no nome de algum programa o processo não vai iniciar, por isso é indicado pesquisar a forma correta de escrever ou remover ele da lista e instalar depois. Veja os dois prints a seguir:
 
-[Pacstrap-Prints]
+![Pacstrap1-Print](Arch-Instalation-Prints/2.6-InstalacaoBase.png)
+
+---
+
+![Pacstrap2-Print](Arch-Instalation-Prints/2.7-InstalacaoBaseInicio.png)
+
 
 Ao finalizar a instalação vamos seguir para configurar o sistema antes de reiniciar, é importante lembrar de não reiniciar ainda a menos que você queira refazer tudo de novo agora!!!
 
@@ -384,6 +406,8 @@ Começamos com um comando que cria um sumário de tudo que tem no computador, pa
 > Para mudar da ISO para o HD/SSD físico do PC e fazer o gerenciamento e organização.
 
 	arch-chroot /mnt
+---
+![EntrarChroot-Print](Arch-Instalation-Prints/2.8-GenChroot.png)
 
 > Agora iniciamos gerando a linguagem e organizamos o teclado:
 
@@ -391,11 +415,15 @@ Começamos com um comando que cria um sumário de tudo que tem no computador, pa
 
 Basta descomentar a linguagem desejada removendo o símbolo de **‘#’** no arquivo de configuração e salvar usando o **‘:x’**, assim como no print abaixo:
  
- [DescomentarLinguagens-Print]
+ ![LocaleDescomentar-Print](Arch-Instalation-Prints/2.9-DescomentarLinguaLocaleGen.png)
+ 
+ ![SalvarX-Print](Arch-Instalation-Prints/3.1-salvarX.png)
  
 Abaixo usamos o comando para gerar todas as linguaens que foram descomentadas e salvas no arquivo de configuração, é uma forma de ativar elas para serem utilizadas no sistema. Veja o comando e o print a seguir:
 
 	locale-gen
+
+![GeraLinguas-Print](Arch-Instalation-Prints/3.2-GeraLinguagemLocale.png)
 
 Vamos utilizar o comando **‘echo’** que direciona tudo o que foi escrito para o local que desejamos. Com ele vamos configurar a linguagem padrão do sistema, o mapeamento de teclado padrão do sistema e o nome do Host/Dono do sistema, é o nome do seu computador para outras pessoas.
 
@@ -413,11 +441,17 @@ Para dar um nome de Host/Dono só é necessário deixar o nome entre parenteses:
 
 Note que em todas as opções utilizamos o símbolo **‘>’** e o local absoluto de armazenamento em seguida como **‘/etc/locale.conf’**, **‘/etc/vconsole.conf’** e **‘/etc/hostname’**, isso é muito importante para que seja salvo corretamente todas as configurações que você fez anteriormente.
 
+![EchosComandos-Print](Arch-Instalation-Prints/3.3-echosConfig.png)
+
 Agora chega minha parte favorita de configurar o Pacman no **PACMAN**ager, pacman é uma sigla para **‘gerenciador de pacotes/pack manager’**, o que vou fazer é ativar uma opção que faz aparecer um desenho de pacman quando os programas são instalados e atualizados, também vou ativar os módulos: **‘Color’**, **‘ParallelDownloads’** e **‘Verbose’**. Esses módulos servem para deixar mais colorido, acelerar os downloads e ajudar a visualizar melhor o que cada comando faz.
 
 Exemplo de como vai aparecer pelo terminal:
 
-[PacmanTerminal-Print]
+![PacmanTerminal-Print](Arch-Instalation-Prints/3.4-ExemploPacman.png)
+
+![pac](Arch-Instalation-Prints/AtualPacAtivo.png)
+
+![ver](Arch-Instalation-Prints/AtualVerboseAtiva.png)
 
 
 > Para isso faremos algumas mudança no arquivo de configuração do **‘pacman’** novamente pelo comando:
@@ -436,7 +470,7 @@ A sessão que vamos modificar é da linha 31 até a linha 37, então vamos adici
 
 Faça como no print abaixo:
 
-[PacmanConfigAll-Print]
+![PacmanConfigAll-Print](Arch-Instalation-Prints/3.5-ModificaçõesPacmanConf.png)
 
 
 Fora o **‘ParallelDownloads’** (que pode ter o número de downloads alterado para qualquer outra numeração que você queira), esses passos são opcionais, já que: a opção **‘Color’** só serve para deixar as coisas mais coloridas no terminal, e isso ajuda a visualizar independente do shell que você for utilizar; a opção **‘VerbosePkgLists’** só serve para ter mais texto explicado o que cada comando faz ou os processos que estão sendo realizados de uma forma mais visível; e a opção de adicionar a linha **‘ILoveCandy’** é por pura diversão para ver o pacman comendo as bolinhas durante as atualizações/downloads de pacotes.
@@ -451,6 +485,8 @@ Para editar o arquivo responsável pelos administradores vamos usar:
 
 Agora é só descomentar a linha **‘85,1’** como no print abaixo:
 
+![GrupoWheel-Pint](Arch-Instalation-Prints/3.6-GrupoWheelDescomentar.png)
+
 *" É importante entender que existem várias linhas relacionadas ao grupo wheel/administradores, a linha descomentada abaixo foi a **'85,1'** que garante acesso a tudo do sistema quando o usuário é adicionado ao grupo wheel/administradores.*
 
 *Leia atentamente o que você está descomentando e para quem você está dando cada permissão e acesso ao criar um novo usuário que não seja o seu pessoal."*
@@ -459,7 +495,11 @@ Ao sair lembre-se de apertar **‘esc’** seguido de **‘:x’** para salvar t
 
 O próximo passo é criar uma senha de ADM utilizando o comando:
 
-> - **passwd** = *Ativa a criação de senha e te pede para adicionar uma senha e confirmar ela, a senha fica escondida como no print abaixo:*
+	passwd
+
+> *Ativa a criação de senha e te pede para adicionar e confirmar ela, a senha fica escondida como no print abaixo:*
+
+![SenhaADM-Print](Arch-Instalation-Prints/3.7-CriaSenhaADM.png)
 
 Agora vamos criar um usuário, já adicionar como menbro do grupo **‘wheel’** e criar o diretório do usuário, sendo por que no final do comando também criamos o nome do usuário, fazemos isso usando o comando:
 
@@ -481,11 +521,13 @@ A semântica segue a ordem seguinte:
 
 O retorno que o terminal vai te dar não vai ser nada, mas se tiver um erro vai aparecer na tela, quando é criado corretamente fica assim:
 
-[UseraddCriado-Print]
+![UseraddCriado-Print](Arch-Instalation-Prints/3.8-UsuarioCriado.png)
 
 Agora é só gerar uma senha para o usuário com o comando e nome do usuário, lembrando que se o usuário não for criado vai dar erro na hora de gerar uma senha, mas o comando é assim:
 
 	passwd NomeDoUsuário
+
+![SenhaUser-Print](Arch-Instalation-Prints/3.9-SenhaUser.png)
 
 Agora vamos para a configuração do [Grub - ArchWiki](https://wiki.archlinux.org/title/GRUB) as sessões que vamos usar são: **‘1’** e **’2.3’**. Lembrando que se você não estiver na máquina virtual, vai precisar fazer essa etapa seguindo os passos abaixo para **‘efi’**:
 
@@ -499,6 +541,8 @@ Para o legacy *(eu não uso a menos que esteja em VM, que é o padrão)*:
 ---
 	grub-mkconfig –p /boot/grub/grub.cfg
 
+![GrubLegacy-Print](Arch-Instalation-Prints/4.1-GrubInstallConfig.png)
+
 _________________{Em caso de Dual Boot – Dois Sistemas}
 
 Para detectarmos outros sistemas sem erros para eles coexistirem é necessário modificar o arquivo de configuração do grub, editamos pelo comando abaixo:
@@ -508,6 +552,8 @@ Para detectarmos outros sistemas sem erros para eles coexistirem é necessário 
 Basta descomentar a linha **‘63,1’**:
 
 > GRUB_DISABLE_OS_PROBER=false
+
+![DualGrub-Print](Arch-Instalation-Prints/4.2-OsProberDualBoot.png)
 
 Essa linha que descomentamos acima serve para detectar outros sistemas.
 
@@ -529,6 +575,8 @@ Agora é só sair do **‘arch-chroot’** digitando:
 Depois é só digitar:
 
 	reboot
+
+![ExitReboot-Print](Arch-Instalation-Prints/4.3-RebootNow.png)
 
 Seu computador vai reiniciar e ao iniciar o sistema já vai estar instalado e ativo, já pode remover o pen-drive se estiver usando um com a ISO.
 
