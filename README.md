@@ -242,6 +242,13 @@ Vale resaltar que você precisa saber o nome com numeração das suas partiçõe
 
 ![FormataçãoEXT4](Arch-Instalation-Prints/2.2-Format-EXT4.png)
 
+*"Caso dê algum erro na formatação do tipo '.ext4' é recomendado formatar assim:*
+
+	mkfs.fat -F32 /dev/vda3
+
+*Esse tipo de formataçãotambém funciona muito bem para o boot, então se ocorrer qualquer erro basta desmontar e remontar como '.fat' para corrigir."*
+
+
 Agora estamos prontos para a montagem dos discos, no final de cada processo aparece se o nome foi dado corretamente como você pode ver nos prints acima.
 
 ---
@@ -533,13 +540,13 @@ Agora vamos para a configuração do [Grub - ArchWiki](https://wiki.archlinux.or
 
 	grub-install —target=x86_64-efi —efi-directory=/boot/efi —bootloader-id=NomeDoHost —removable
 ---
-	grub-mkconfig –p /boot/grub/grub.cfg
+	grub-mkconfig –o /boot/grub/grub.cfg
 
 Para o legacy *(eu não uso a menos que esteja em VM, que é o padrão)*:
 
 	grub-install --target=i386-pc /dev/sdx
 ---
-	grub-mkconfig –p /boot/grub/grub.cfg
+	grub-mkconfig –o /boot/grub/grub.cfg
 
 ![GrubLegacy-Print](Arch-Instalation-Prints/4.1-GrubInstallConfig.png)
 
@@ -586,6 +593,10 @@ Seu computador vai reiniciar e ao iniciar o sistema já vai estar instalado e at
 
 ### 9)	Pós-Instalação
 
+# Esta sessão ainda está em desenvolvimento, recomendo fortemente que você utilize um auxilio melhor para configuraro seu sistema e use um arquivo de configuração de seu agrado pelo 'git clone'!
+
+---
+
 
 Nessa hora é uma boa ideia já ter suas configurações próprias prontas, o Arch basicamente vai ser instalado sem nenhuma interface e se você utilizar interfaces que você precisa configurar já é bom fazer com antecedência e deixar disponível no seu github ou gitlab. A menos é claro que você saiba construir seu código pessoal de cabeça.
 
@@ -598,3 +609,22 @@ Bom, caso você esteja usando alguma interface gráfica já pronta, basta ativar
 ---
 
 ### 10)	Organização da interface gráfica e visual
+
+Essa parte é um pouquinho mais fácil, é a hora da gente ficar mexendo no que quiser pra deixar mais bonitinho, então vou dar algumas opções.
+
+> - Mexer direto no arquivo de configuração dos modificadores do seu sistema, ex: xorg,xmonad,xmobar,polybar;
+> 
+> - Mexer nas configurações usando arquivos pré-prontos já com um design definido, ex: dotfiles/arquivos de configuração, backup de um sistema, etc;
+> 
+> - Utilizar programas para configurar o seu desktop, ex: nitrogen, pcmanfm, lxappearance, etc;
+
+O jeito mais certeiro é ter uma pré-configuração já pronta com suas preferências, chamamos essas pré-configurações de dotfiles, mas eu prefiro dizer que é um arquivo de configuração.
+
+Tem várias formas de criar e alocar eles, o que eu prefiro é deixar alocado em um lugar de fácil acesso pelo terminal e com backup garantido, fora que seja fácil de manter atualizado. Por isso é muito fácil encontrar esses tipos de arquivos no github ou no gitlab por exemplo.
+
+É importante ter uma ideia do que você vai precisar para o seu computador, já que nesses arquivos não tem somente a aparência dele, você também pode deixar scripts de configuração do sistema e pastas com as suas configurações pessoais para aparelhos USB, etc...
+
+Essa é a hora de você criar e explorar mesmo, ter ideias e testar essas ideias.
+
+Vou deixar um exemplo de como implementar alguns dots do github pelo terminal. O processo é bem simples de se fazer.
+
