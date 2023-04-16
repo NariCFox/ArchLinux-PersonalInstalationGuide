@@ -593,7 +593,7 @@ Seu computador vai reiniciar e ao iniciar o sistema já vai estar instalado e at
 
 ### 9)	Pós-Instalação
 
-# Esta sessão ainda está em desenvolvimento, recomendo fortemente que você utilize um auxilio melhor para configuraro seu sistema e use um arquivo de configuração de seu agrado pelo 'git clone'!
+# Esta sessão ainda está em desenvolvimento, recomendo fortemente que você utilize um auxilio melhor para configurar o seu sistema e use um arquivo de configuração de seu agrado pelo 'git clone'!
 
 ---
 
