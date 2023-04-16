@@ -11,9 +11,9 @@ Baseado na [ArchWiki](https://wiki.archlinux.org/title/Installation_guide) em in
 
 + *Primeiro de tudo é necessário formatar um pendrive para fazer o boot da ISO desejada, só depois dá pra adicionar a ISO. Eu utilizei o [Ventoy](https://www.ventoy.net/en/index.html) para formatar. Com o [Ventoy](https://www.ventoy.net/en/index.html) é possível usar vários tipos de ISO e distros diferentes.*
 
-+ *Caso seja necessário, é possível aumentar o tamanho da fonte dentro da ISO de acordo com a sua preferência utilizando o **‘setfont’**, mais detalhes na página da ArchWiki na sessão 3.1: [ConsoleFonts](https://wiki.archlinux.org/title/Linux_console#Fonts).*
++ *Caso seja necessário, é possível aumentar o tamanho da fonte dentro da ISO de acordo com a sua preferência utilizando o **` setfont `**, mais detalhes na página da ArchWiki na sessão 3.1: [ConsoleFonts](https://wiki.archlinux.org/title/Linux_console#Fonts).*
 
-+ *Algumas vezes pode ocorrer algum problema com a ISO, esses problemas são resolvidos fazendo a atualização das keyrings/chaves baixando o pacote **'archlinux-keyring'**, depois é só iniciar e popular pelo pacman. Mais informações na ArchWiki, sessões 1.2 e 2.1: [Keyring: Init e Populate](https://wiki.archlinux.org/title/Pacman/Package_signing).*
++ *Algumas vezes pode ocorrer algum problema com a ISO, esses problemas são resolvidos fazendo a atualização das keyrings/chaves baixando o pacote **` archlinux-keyring `**, depois é só iniciar e popular pelo pacman. Mais informações na ArchWiki, sessões 1.2 e 2.1: [Keyring: Init e Populate](https://wiki.archlinux.org/title/Pacman/Package_signing).*
 
 ---
 ---
@@ -34,7 +34,7 @@ Para pesquisar a os teclados disponíveis utilizamos o comando:
 > 
 > - ***br**: Você pode modificar a sigla para o idioma desejado, br pesquisa em português brasileiro. 
 
-Se você quiser pesquisar todos os idiomas disponíveis, é só deixar o comando sem o **‘br’**, como é mostrado abaixo.
+Se você quiser pesquisar todos os idiomas disponíveis, é só deixar o comando sem o **` br `**, como é mostrado abaixo.
 
 	ls /usr/share/kbd/keymaps/**/*.map.gz
 
@@ -42,9 +42,9 @@ Para selecionar o teclado desejado, basta adicionar o comando abaixo:
 
 	loadkeys br-abnt2
  
-A opção de **‘loadkeys’** serve para ativar o telado e a opção de **‘br-abnt2’** seleciona a opção de português brasileiro, outro exemplo de idioma seria o **‘de-latin1’** que é usado como padrão pela ArchWiki em inglês.
+A opção de **` loadkeys `** serve para ativar o telado e a opção de **` br-abnt2 `** seleciona a opção de português brasileiro, outro exemplo de idioma seria o **` de-latin1 `** que é usado como padrão pela ArchWiki em inglês.
 
-Esse é o básico de como ativar o teclado em outro idioma para você ter acesso a símbolos como: **‘|’, ’/’** e **‘ç’**.
+Esse é o básico de como ativar o teclado em outro idioma para você ter acesso a símbolos como: **` | `, ` / `** e **` ç `**.
 
 ---
 ---
@@ -627,4 +627,5 @@ Tem várias formas de criar e alocar eles, o que eu prefiro é deixar alocado em
 Essa é a hora de você criar e explorar mesmo, ter ideias e testar essas ideias.
 
 Vou deixar um exemplo de como implementar alguns dots do github pelo terminal. O processo é bem simples de se fazer.
+
 
