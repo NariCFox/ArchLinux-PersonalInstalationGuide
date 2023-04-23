@@ -602,6 +602,44 @@ Nessa hora é uma boa ideia já ter suas configurações próprias prontas, o Ar
 
 Bom, caso você esteja usando alguma interface gráfica já pronta, basta ativar ela. Caso contrário, vamos ao rolê agora.
 
+É muito importante ativar e habiltar corretamente os programas básicos para utilizar o seu ArchLinux e poder seguir para a utilização.
+
+Iniciamos habilitando os 3 essenciais que são: **`Som`, `Internet` e `DisplayManager/GerenciadorDeDisplay`**.
+
+Para habilitar são alguns comandinhos simples que vamos ver abaixo com os programas que eu utilizei nessa instalação como exemplo.
+
+Ativa seu gerenciador de internet cabeada/wi-fi:
+
+	sudo systemctl enable --now NetworkManager
+
+Ativa o sistema de som:
+
+	systemctl --user enable --now wireplumber
+
+Ativa o display manager de sua escolha:
+	
+	sudo systemctl enable lightdm
+
+Dessa forma ativamos o básico para conseguir ouvir e navegar sem muito trabalho.
+
+Agora vamos criar alguns diretórios base do sistema, como `Área de Trabalho`, `Downloads`, `Documentos` e etc...
+
+Para isso vamos fazer o download de um programa que cria por padrão os diretórios com o comando abaixo
+
+	sudo pacman -S xdg-user-dirs
+
+Para criar os diretórios basta ir para a pasta do seu usuário e utilizar o comando:
+
+	xdg-user-dirs-update
+
+Esse comando é usado quando rodamos pela primeira vez o programa, e ele cria as pastas e diretórios padrões de um sistema, como na imagem abaixo.
+
+![DiretóriosXDG-Print](Arch-Instalation-Prints/4.4-XdgCriaDirs.png)
+
+Agora já temos o essencial do systemctl habilitado, 
+temos pastas para navegar e temos um display manager para podermos ver uma tela de login e usuário, além de ativar o nosso display do sistema ao iniciar o computador.
+
+O próximo passo é configurar a interface gráfica de sua escolha!
 
 
 ---
@@ -612,11 +650,11 @@ Bom, caso você esteja usando alguma interface gráfica já pronta, basta ativar
 
 Essa parte é um pouquinho mais fácil, é a hora da gente ficar mexendo no que quiser pra deixar mais bonitinho, então vou dar algumas opções.
 
-> - Mexer direto no arquivo de configuração dos modificadores do seu sistema, ex: xorg,xmonad,xmobar,polybar;
+> - Mexer direto no arquivo de configuração dos modificadores do seu sistema, ex: `xorg`, `xmonad`, `xmobar`, `polybar`;
 > 
-> - Mexer nas configurações usando arquivos pré-prontos já com um design definido, ex: dotfiles/arquivos de configuração, backup de um sistema, etc;
+> - Mexer nas configurações usando arquivos pré-prontos já com um design definido, ex: dotfiles/arquivos de configuração, backup de um outro sistema, etc;
 > 
-> - Utilizar programas para configurar o seu desktop, ex: nitrogen, pcmanfm, lxappearance, etc;
+> - Utilizar programas para configurar o seu desktop, ex: `nitrogen`, `pcmanfm`, `lxappearance`, etc;
 
 O jeito mais certeiro é ter uma pré-configuração já pronta com suas preferências, chamamos essas pré-configurações de dotfiles, mas eu prefiro dizer que é um arquivo de configuração.
 
@@ -627,5 +665,19 @@ Tem várias formas de criar e alocar eles, o que eu prefiro é deixar alocado em
 Essa é a hora de você criar e explorar mesmo, ter ideias e testar essas ideias.
 
 Vou deixar um exemplo de como implementar alguns dots do github pelo terminal. O processo é bem simples de se fazer.
+
+Iniciamos fazendo uma pesquisa e escolhendo algum arquivo de configuração com a aparência desejada, como eu já escolhi o meu por recomendação vou pular essa parte da pesquisa.
+
+Agora que o arquivo já foi escolhido é só copiar o link do código do github ou gitlab:
+
+![CopyCode-Print](Arch-Instalation-Prints/4.5-CopyGitDot.png)
+
+Após copiar o link é só por o seguinte comando com o URL copiado na frente do código no terminal:
+
+	git clone https://github.com/thalting/dotfiles.git
+
+![GtiCloneDots-Print](Arch-Instalation-Prints/4.6-GitCloneDots.png)
+
+Após clonar os pacotes de configuração, para ativar as modificaçõesnós vamos fazer o seguinte.
 
 
