@@ -639,6 +639,8 @@ Esse comando é usado quando rodamos pela primeira vez o programa, e ele cria as
 Agora já temos o essencial do systemctl habilitado, 
 temos pastas para navegar e temos um display manager para podermos ver uma tela de login e usuário, além de ativar o nosso display do sistema ao iniciar o computador.
 
+Muito importante, se o tema do seu display manager não for ativado, ele não vai rodar direito para iso usamos a sessão da [ArchWiki-LightDM](https://wiki.archlinux.org/title/LightDM) para escolher o gerenciador de temas.
+
 O próximo passo é configurar a interface gráfica de sua escolha!
 
 
